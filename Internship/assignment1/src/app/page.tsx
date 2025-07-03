@@ -1,26 +1,58 @@
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
+import quotes from '../../data/quotes.json';
 
 export default function Home() {
+  const [topic, setTopic] = useState('');
+  const [result, setResult] = useState<string[] | null>(null);
+  const [error, setError] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = topic.trim();
+    const match = quotes[trimmed as keyof typeof quotes];
+
+    if (!trimmed) {
+      setError('Please enter a topic.');
+      setResult(null);
+    } else if (match) {
+      setError('');
+      setResult(match);
+    } else {
+      setError(`No quotes found for "${trimmed}". Try: Coding, Football, Cricket, or Gaming.`);
+      setResult(null);
+    }
+  };
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-8">
-      <h1 className="text-3xl font-bold mb-4">My Learning Page</h1>
-      <p className="text-lg mb-6">learning Next.js and React fundamentals</p>
+    <div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div>
+        <h1 style={{ textAlign: 'center' }}>Quote Generator</h1>
+        <form onSubmit={handleSubmit} style={{ textAlign: 'center' }}>
+          <input
+            type="text"
+            value={topic}
+            onChange={(e) => setTopic(e.target.value)}
+            placeholder="Enter a topic (e.g. Coding)"
+            style={{ padding: '8px', width: '250px' }}
+          />
+          <br /><br />
+          <button type="submit" style={{ padding: '8px 16px' }}>Submit</button>
+        </form>
 
-      <Image
-        src="/next.svg"
-        alt="Next.js Logo"
-        width={150}
-        height={40}
-      />
+        {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
 
-      <div className="mt-8 text-center">
-        <h2 className="text-xl font-semibold mb-2">practicing:</h2>
-        <ul className="list-disc list-inside text-left">
-          <li>JSX and components</li>
-          <li>Props and state</li>
-          <li>Pages and routing in Next.js</li>
-          <li>Styling with Tailwind CSS</li>
-        </ul>
+        {result && (
+          <div style={{ marginTop: '20px' }}>
+            <h2 style={{ textAlign: 'center' }}>Quotes on &quot;{topic.trim()}&quot;</h2>
+            <ul>
+              {result.map((q, i) => (
+                <li key={i}>&quot;{q}&quot;</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
