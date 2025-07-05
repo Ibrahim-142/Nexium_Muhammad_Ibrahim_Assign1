@@ -57,7 +57,7 @@ export default function Home() {
 
   return (
 <main className="flex-grow flex justify-center items-center px-4 mt-5">
-  <div className="bg-white/90 shadow-2xl rounded-2xl p-8 w-full max-w-md backdrop-blur-sm min-h-[400px] flex flex-col justify-between">
+  <div className="bg-amber-100/90 shadow-2xl rounded-2xl p-8 w-full max-w-md backdrop-blur-sm min-h-[400px] flex flex-col justify-between mt-8">
     
     <div>
       <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
@@ -67,7 +67,7 @@ export default function Home() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-6"
+          className="space-y-6 "
           noValidate
         >
           <FormField
@@ -107,7 +107,7 @@ export default function Home() {
       <DialogTrigger asChild>
         <div className="hidden" />
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className='bg-amber-50'>
         <DialogHeader>
           <DialogTitle>Motivational Quotes - {submittedTopic}</DialogTitle>
           <DialogDescription>
