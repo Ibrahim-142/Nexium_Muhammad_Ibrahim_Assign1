@@ -18,6 +18,8 @@ import {
   FormLabel,
   FormMessage
 } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -54,71 +56,73 @@ export default function Home() {
   const quotesByTopic = quotes as Record<string, string[]>;
 
   return (
-    <main className="flex-grow flex justify-center items-center px-4 mt-5">
-      <div className="bg-amber-100/90 shadow-2xl rounded-2xl p-8 w-full max-w-md backdrop-blur-sm min-h-[400px] flex flex-col justify-between mt-8">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-            Enter a Topic
-          </h1>
+<main className="flex-grow flex justify-center items-center px-4 mt-5">
+  <div className="bg-amber-100/90 shadow-2xl rounded-2xl p-8 w-full max-w-md backdrop-blur-sm min-h-[400px] flex flex-col justify-between mt-8">
+    
+    <div>
+      <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+        Enter a Topic
+      </h1>
 
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-6"
-              noValidate
-            >
-              <FormField
-                control={form.control}
-                name="topic"
-                render={({ field }) => (
-                  <FormItem>
-                    <div className="mt-18">
-                      <FormLabel className="text-gray-700">Topic</FormLabel>
-                      <FormControl>
-                        <input
-                          type="text"
-                          placeholder="e.g. Coding, Football, Cricket, Gaming"
-                          {...field}
-                          className="input input-bordered w-full mt-4"
-                        />
-                      </FormControl>
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-6 "
+          noValidate
+        >
+          <FormField
+            control={form.control}
+            name="topic"
+            render={({ field }) => (
+              <FormItem>
+                <div className='mt-18'>
+                <FormLabel className="text-gray-700 ">Topic</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="e.g. Coding, Football,Cricket,Gaming "
+                    {...field}
+                    className="w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mt-4"
+                  />
+                </FormControl>
+                </div>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </form>
+      </Form>
+    </div>
 
-              <button
-                type="submit"
-                className="btn btn-primary w-full mt-20"
-              >
-                Submit
-              </button>
-            </form>
-          </Form>
-        </div>
-      </div>
+    <Button
+      type="submit"
+      onClick={form.handleSubmit(onSubmit)}
+      className="w-full transition-all duration-200 hover:cursor-pointer hover:scale-105 mt-10"
+    >
+      Submit
+    </Button>
+  </div>
 
-      {submittedTopic && (
-        <Dialog open={!!submittedTopic} onOpenChange={() => setSubmittedTopic(null)}>
-          <DialogTrigger asChild>
-            <div className="hidden" />
-          </DialogTrigger>
-          <DialogContent className="bg-amber-50">
-            <DialogHeader>
-              <DialogTitle>Motivational Quotes - {submittedTopic}</DialogTitle>
-              <DialogDescription>
-                Here are 3 motivational quotes for your selected topic:
-              </DialogDescription>
-            </DialogHeader>
-            <ul className="list-disc list-inside text-gray-700 mt-4 space-y-2">
-              {quotesByTopic[submittedTopic]?.map((quote, index) => (
-                <li key={index}>&quot;{quote}&quot;</li>
-              ))}
-            </ul>
-          </DialogContent>
-        </Dialog>
-      )}
-    </main>
+  {submittedTopic && (
+    <Dialog open={!!submittedTopic} onOpenChange={() => setSubmittedTopic(null)}>
+      <DialogTrigger asChild>
+        <div className="hidden" />
+      </DialogTrigger>
+      <DialogContent className='bg-amber-50'>
+        <DialogHeader>
+          <DialogTitle>Motivational Quotes - {submittedTopic}</DialogTitle>
+          <DialogDescription>
+            Here are 3 motivational quotes for your selected topic:
+          </DialogDescription>
+        </DialogHeader>
+        <ul className="list-disc list-inside text-gray-700 mt-4 space-y-2">
+          {quotesByTopic[submittedTopic]?.map((quote, index) => (
+            <li key={index}>&quot;{quote}&quot;</li>
+          ))}
+        </ul>
+      </DialogContent>
+    </Dialog>
+  )}
+</main>
+
   );
 }
