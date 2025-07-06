@@ -57,11 +57,11 @@ export default function Home() {
 
   return (
 <main className="flex-grow flex justify-center items-center px-4 mt-5">
-  <div className="bg-amber-100/90 shadow-2xl rounded-2xl p-8 w-full max-w-md backdrop-blur-sm min-h-[400px] flex flex-col justify-between mt-8">
+  <div className="bg-orange-200 shadow-2xl rounded-2xl p-8 w-full max-w-md backdrop-blur-sm min-h-[400px] flex flex-col justify-between mt-8">
     
     <div>
-      <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-        Enter a Topic
+      <h1 className="text-3xl font-bold  text-blue-950 mb-6 text-center">
+        Enter a Topic 
       </h1>
 
       <Form {...form}>
@@ -76,13 +76,13 @@ export default function Home() {
             render={({ field }) => (
               <FormItem>
                 <div className='mt-18'>
-                <FormLabel className="text-gray-700 ">Topic</FormLabel>
+                <FormLabel className="text-blue-950 ">Topic</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="e.g. Coding, Football,Cricket,Gaming "
-                    {...field}
-                    className="w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mt-4"
-                  />
+                  placeholder="e.g. Coding, Football, Cricket, Gaming"
+                  {...field}
+                  className="w-full mt-2 px-4 py-3 text-sm text-blue-950 border border-blue-950 rounded-xl shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-950 focus:border-blue-950 transition duration-200"
+/>
                 </FormControl>
                 </div>
                 <FormMessage />
@@ -96,7 +96,7 @@ export default function Home() {
     <Button
       type="submit"
       onClick={form.handleSubmit(onSubmit)}
-      className="w-full transition-all duration-200 hover:cursor-pointer hover:scale-105 mt-10"
+      className="w-full bg-blue-950 transition-all duration-200 hover:cursor-pointer hover:scale-105 mt-10 "
     >
       Submit
     </Button>
@@ -107,16 +107,16 @@ export default function Home() {
       <DialogTrigger asChild>
         <div className="hidden" />
       </DialogTrigger>
-      <DialogContent className='bg-amber-50'>
+      <DialogContent className='bg-orange-200'>
         <DialogHeader>
-          <DialogTitle>Motivational Quotes - {submittedTopic}</DialogTitle>
+          <DialogTitle className='text-blue-950 text-xl '>Motivational Quotes - {submittedTopic}</DialogTitle>
           <DialogDescription>
             Here are 3 motivational quotes for your selected topic:
           </DialogDescription>
         </DialogHeader>
         <ul className="list-disc list-inside text-gray-700 mt-4 space-y-2">
           {quotesByTopic[submittedTopic]?.map((quote, index) => (
-            <li key={index}>&quot;{quote}&quot;</li>
+            <li key={index} className='text-gray-800'>&quot;{quote}&quot;</li>
           ))}
         </ul>
       </DialogContent>

@@ -26,9 +26,9 @@ export default function RootLayout({
     <html lang="en">
        
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-amber-50`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
-         <header className="w-full shadow p-4 bg-amber-100/90 backdrop-blur">
+         <header className="w-full shadow p-4 bg-orange-200 backdrop-blur">
         <div className="max-w-4xl mx-auto text-xl font-bold text-gray-800 text-center">
           Welcome to Muhammad Ibrahim&apos;s Assignment 1
         </div>
@@ -36,7 +36,7 @@ export default function RootLayout({
        <Separator />
 
         {children}
-    <footer className="w-full bg-amber-100/90 backdrop-blur border-t py-5 mt-14">
+    <footer className="w-full bg-orange-200 backdrop-blur border-t py-5 mt-14">
   <div className="max-w-4xl mx-auto text-center text-xs text-gray-500 leading-tight mt-2">
     © {new Date().getFullYear()} Muhammad Ibrahim. All rights reserved.
   </div>
