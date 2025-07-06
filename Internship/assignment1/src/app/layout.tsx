@@ -30,7 +30,7 @@ export default function RootLayout({
       >
          <header className="w-full shadow p-4 bg-orange-200 backdrop-blur">
         <div className="max-w-4xl mx-auto text-xl font-bold text-blue-950 text-center">
-          Welcome to Muhammad Ibrahim&apos;s Assignment 1
+          Welcome to Muhammad Ibrahim&apos;s Quote Generator
         </div>
       </header>
        <Separator />
