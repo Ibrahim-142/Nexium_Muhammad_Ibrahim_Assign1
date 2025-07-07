@@ -1,5 +1,4 @@
 'use client';
-
 import { useState } from 'react';
 import quotes from '../../data/quotes.json';
 import {
@@ -32,7 +31,6 @@ type FormValues = z.infer<typeof formSchema>;
 
 export default function Home() {
   const [submittedTopic, setSubmittedTopic] = useState<string | null>(null);
-
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
