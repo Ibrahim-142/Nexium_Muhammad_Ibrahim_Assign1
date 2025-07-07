@@ -39,7 +39,7 @@ export default function Home() {
   });
 
   const onSubmit = (data: FormValues) => {
-    const trimmed = data.topic.trim();
+    const trimmed = data.topic.trim().toLowerCase();
     if (quotes[trimmed as keyof typeof quotes]) {
       setSubmittedTopic(trimmed);
     } else {
