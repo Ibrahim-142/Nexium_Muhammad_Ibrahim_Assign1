@@ -141,8 +141,9 @@ export default function Home() {
           <DialogContent className="bg-white/95 backdrop-blur-xl border border-blue-300 rounded-xl p-6 shadow-xl">
             <DialogHeader>
               <DialogTitle className="text-blue-900 text-2xl font-bold">
-                Quotes for &quot;{submittedTopic}&quot;
-              </DialogTitle>
+  Quotes for &quot;{submittedTopic.charAt(0).toUpperCase() + submittedTopic.slice(1)}&quot;
+</DialogTitle>
+
               <DialogDescription className="text-gray-700 mt-2">
                 Here are 3 motivational quotes for your selected topic:
               </DialogDescription>
